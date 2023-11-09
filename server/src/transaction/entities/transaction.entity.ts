@@ -1,6 +1,7 @@
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm"
+
 import { Category } from "src/category/entities/category.entity"
 import { User } from "src/user/entities/user.entity"
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm"
 
 @Entity()
 export class Transaction {
