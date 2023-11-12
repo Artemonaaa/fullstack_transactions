@@ -16,10 +16,10 @@
 
 @layer components {
   .btn {
-    @apply flex gap-2 items-center text-sm text-white py-2 px-4 rounded-md;
+    @apply flex items-center gap-2 rounded-md px-4 py-2 text-white;
   }
   .input {
-    @apply bg-transparent p-2 border bg-slate-700 placeholder:text-white border-stone-800 rounded-md outline-none focus:border-slate-300;
+    @apply rounded-md border border-stone-800 bg-slate-700 bg-transparent p-2 outline-none placeholder:text-white focus:border-slate-300;
   }
   .container {
     @apply max-w-[1000px];
