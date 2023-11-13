@@ -35,7 +35,7 @@ export class TransactionService {
         user: {id}
       },
       order: {
-        createAt: 'DESC'
+        createdAt: 'DESC'
       }
     })
     return transactions
@@ -86,7 +86,7 @@ export class TransactionService {
         category: true
       },
       order: {
-        createAt: "DESC"
+        createdAt: "DESC"
       },
       take: limit,
       skip: (page - 1) * limit,

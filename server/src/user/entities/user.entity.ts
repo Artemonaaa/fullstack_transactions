@@ -21,8 +21,8 @@ export class User {
   transactions: Transaction[]
 
   @CreateDateColumn()
-  createAt: Date
+  createdAt: Date
 
   @UpdateDateColumn()
-  updateAt: Date
+  updatedAt: Date
 }

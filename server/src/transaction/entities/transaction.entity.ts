@@ -26,8 +26,8 @@ export class Transaction {
   amount: number
 
   @CreateDateColumn()
-  createAt: Date
+  createdAt: Date
 
   @UpdateDateColumn()
-  updateAt: Date
+  updatedAt: Date
 }
