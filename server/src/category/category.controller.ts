@@ -44,7 +44,7 @@ export class CategoryController {
   @Patch(':type/:id')
   @UseGuards(JwtAuthGuard, AuthorGuard)
   update(
-    @Param(':type/:id') id: string,
+    @Param('id') id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
   ) {
     return this.categoryService.update(+id, updateCategoryDto)

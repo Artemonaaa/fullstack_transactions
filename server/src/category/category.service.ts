@@ -36,6 +36,9 @@ export class CategoryService {
       where: {
         user: { id },
       },
+      order: {
+        createdAt: 'DESC'
+      },
       relations: {
         transactions: true
       }
