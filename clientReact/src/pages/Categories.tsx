@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 import { AiFillEdit, AiFillCloseCircle } from 'react-icons/ai'
 import { FaPlus } from 'react-icons/fa'
 import { Form, useLoaderData } from 'react-router-dom'
+
 import CategoryModal from '../components/CategoryModal'
 import { instance } from '../api/axios.api'
 import { ICategory } from '../types/types'

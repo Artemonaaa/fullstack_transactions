@@ -19,7 +19,7 @@ import { UpdateTransactionDto } from './dto/update-transaction.dto'
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard'
 import { AuthorGuard } from 'src/guard/author.guard'
 
-@Controller('transaction')
+@Controller('transactions')
 export class TransactionController {
   constructor(private readonly transactionService: TransactionService) {}
 
@@ -36,7 +36,7 @@ export class TransactionController {
     return this.transactionService.findAllByType(+req.user.id, type)
   }
 
-  @Get('paginaion')
+  @Get('pagination')
   @UseGuards(JwtAuthGuard)
   findAllWithPagination(@Req() req, @Query('page') page: number = 1, @Query('limit') limit: number = 3) {
     return this.transactionService.findAllWithPagination(+req.user.id, +page, +limit)
