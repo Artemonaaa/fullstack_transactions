@@ -1,10 +1,15 @@
 import { FC } from 'react'
+import { useLoaderData } from 'react-router-dom'
+import { toast } from 'react-toastify'
   
 import TransactionForm from '../components/TransactionForm'
-import { instance } from '../api/axios.api' 
-import { ICategory, ITransaction } from '../types/types'
-import { toast } from 'react-toastify'
+import Chart from '../components/Chart'
 import TransactionTable from '../components/TransactionTable'
+
+import { instance } from '../api/axios.api' 
+import { formatToUSD } from '../helpers/currency.helper'
+
+import { ICategory, IResponseTransactionLoader, ITransaction } from '../types/types'
 
 export const transactionAction = async ({ request }: any) => { 
   switch (request.method) {
@@ -36,16 +41,21 @@ export const transactionAction = async ({ request }: any) => {
 export const transactionLoader = async () => { 
   const categories = await instance.get<ICategory[]>('/categories')
   const transactions = await instance.get<ITransaction[]>('/transactions')
+  const totalIncome = await instance.get<number>('/transactions/income/find')
+  const totalExpense = await instance.get<number>('/transactions/expense/find')
 
   const data = { 
     categories: categories.data,
-    transactions: transactions.data
+    transactions: transactions.data,
+    totalIncome: totalIncome.data,
+    totalExpense: totalExpense.data,
   }
 
   return data 
 }
 
 const Transactions: FC = () => {
+  const { totalIncome, totalExpense } = useLoaderData() as IResponseTransactionLoader
 
   return (
     <>
@@ -63,7 +73,7 @@ const Transactions: FC = () => {
                 Totatl Income:
               </p>
               <p className="mt-2 rounded-sm bg-green-600 p-1 text-center">
-                1000$
+                {formatToUSD.format(totalIncome)}
               </p>
             </div>
             <div className="">
@@ -71,12 +81,14 @@ const Transactions: FC = () => {
                 Totatl Expense:
               </p>
               <p className="mt-2 rounded-sm bg-red-500 p-1 text-center">
-                1000$
+                {formatToUSD.format(totalExpense)}
               </p>
             </div>
           </div>
 
-          <>Chart</>
+          <>
+            <Chart totalIncome={totalIncome} totalExpense={totalExpense} />
+          </>
         </div>
       </div>
 
