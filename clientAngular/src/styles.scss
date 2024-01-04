@@ -18,7 +18,7 @@
   }
 
   .btn {
-    @apply text-sm py-2 px-4 rounded-sm text-white transition-colors;
+    @apply text-sm py-2 px-4 rounded-sm text-white transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed;
   }
 }
 
